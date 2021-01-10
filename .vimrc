@@ -4,7 +4,11 @@
 
 " disable vi compatibility
 set nocompatible
+
 filetype off
+syntax enable
+filetype plugin on
+
 
 """""""""
 "" Vundle
@@ -27,12 +31,6 @@ Plugin 'VundleVim/Vundle.vim'
 "   :PluginClean
 " Plugins
 
-"Plugin 'shougo/vimproc.vim'
-"Plugin 'steffanc/cscopemaps.vim'
-"Plugin 'matlab'
-"
-"Plugin 'junegunn/goyo.vim' "Distraction free writing. vim Not a fan
-
 Plugin 'scrooloose/nerdtree'
 map <F2> :NERDTreeToggle <CR>
 
@@ -43,75 +41,34 @@ Plugin 'vim-airline/vim-airline-themes'
 let g:airline_theme='bubblegum'
 "let g:airline_solarized_bg='light'
 
-"Plugin 'godlygeek/tabular'
-
-"Plugin 'benmills/vimux' "spliting terminal
-
-"Plugin 'w0rp/ale'
-"" Enable completion where available.
-"" This setting must be set before ALE is loaded.
-"let g:ale_completion_enabled = 1
-
-
-
-" I removed it because making my vim slow
-"git
-"Plugin 'tpope/vim-fugitive'
-" I removed it too  because making my vim slow
 Plugin 'airblade/vim-gitgutter'
-
-
-"Plugin 'foldutil/foldutil.vim'
 
 " Color schemes
 Plugin 'nelstrom/vim-mac-classic-theme'
 Plugin 'altercation/vim-colors-solarized'
 
 " Fuzzy search file
-Plugin 'kien/ctrlp.vim'
+"Plugin 'kien/ctrlp.vim'
 
 "Autocompletion
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
-
-" I just do not like to use snippets anymore; not useful
-"Plugin 'garbas/vim-snipmate'
-"    "" Ultisnips
-"" Track the engine.
-"Plugin 'SirVer/ultisnips'
-" Snippets are separated from the engine. Add this if you want them:
-" Plugin 'honza/vim-snippets'
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-"let g:UltiSnipsExpandTrigger="<TAB>"
-"let g:UltiSnipsJumpForwardTrigger="<C-B>"
-"let g:UltiSnipsJumpBackwardTrigger="<C-Z>"
-"" If you want :UltiSnipsEdit to split your window.
-"let g:UltiSnipsEditSplit="vertical"
+"Plugin 'MarcWeber/vim-addon-mw-utils'
+"Plugin 'tomtom/tlib_vim'
 
 "Tagbar for programming
 Plugin 'majutsushi/tagbar'
 nmap <F8> :TagbarToggle <CR>
 
 "search  match with silver searchr
-Plugin 'mileszs/ack.vim'
+"Plugin 'mileszs/ack.vim'
 
 
-""Plugin 'valloric/youcompleteme'
-"Plugin 'rdnetto/YCM-Generator'
-
-
-"Plugin 'rip-rip/clang_complete'
 call vundle#end()
 " path to directory where library can be found
 let g:clang_library_path='/usr/local/llvm/clang-3.8/lib/libclang.so'
 
-"Plugin 'OmniCppComplete'
 """"""""
 " Colors
 """"""""
-
-syntax enable
-
 "set term=xterm-256color
 let g:solarized_termcolors=256
 set t_Co=256
@@ -133,6 +90,7 @@ set expandtab " tabs are not converted to spaces
 set smartindent
 set autoindent
 set nocscopeverbose
+set cinkeys-=0#
 
 set backspace=indent,eol,start
 """""""""""
@@ -154,6 +112,12 @@ set laststatus=1 "only if there are at least two windows
 set nobackup
 set nowritebackup
 
+""""""""""""""""""""
+" FINDING FILES:
+""""""""""""""""""""
+" Provides tab-completion for all file-related tasks
+set path+=**
+
 """""""""""
 " Searching
 """""""""""
@@ -162,6 +126,9 @@ set incsearch " search as characters are entered
 set hlsearch " highlight matches
 " turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR>
+"searching for special characters as normal text
+"command! -nargs=1 Ss let @/ = <q-args>
+command! -nargs=1 SS let @/ = '\V'.escape(<q-args>, '\')
 
 
 
@@ -224,52 +191,28 @@ set writebackup
 " tags 
 """""""""
 set tags=./tags;$HOME
+command! MakeTags !ctags -R .
+" - Use ^] to jump to tag under cursor
+" - Use g^] for ambiguous tags
+" - Use ^t to jump back up the tag stack
 
 
 " Use visual bell instead of beeping when doing something wrong
 set visualbell
 
-""""""""""" limelight options
-"
-"let g:limelight_conceal_ctermfg = 254  " Solarized Base2
-"let g:limelight_conceal_guifg = '#eee8d5'  " SolarizedBase2
-""VimShell to work with my alias
-"set shell=/bin/bash\ -l
-
 
 """"""""""""""""""""
 "" limit text width
 """"""""""""""""""""
-set tw=80
+set tw=80                " automatic wrapping
+"set tw=0                  " stop automatic wrapping
 set colorcolumn=+1        " highlight column after 'textwidth'
 "set colorcolumn=+1,+2,+3  " highlight three columns after 'textwidth'
 highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
-"set colorcolumn=80
-"
-""""""""""""""""""""
-"" Clipboard copy
-""""""""""""""""""""
-"    let g:clipboard = {
-"          \   'name': 'myClipboard',
-"          \   'copy': {
-"          \      '+': 'tmux load-buffer -',
-"          \      '*': 'tmux load-buffer -',
-"          \    },
-"          \   'paste': {
-"          \      '+': 'tmux save-buffer -',
-"          \      '*': 'tmux save-buffer -',
-"          \   },
-"          \   'cache_enabled': 1,
-"          \ }
-"
-"set clipboard=unnamedplus
-"set clipboard=unnamed
-"nnoremap <C-y> "+y
-"vnoremap <C-y> "+y
-"nnoremap <C-p> "+gP   "spoil ctrlp addon
-"vnoremap <C-p> "+gP
+set colorcolumn=80
 
 "silver searcher
 let g:ackprg= 'ag --vimgrep'
 
 "set paste "Doesnt work with snippets
+set modifiable
