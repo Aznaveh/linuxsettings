@@ -32,8 +32,8 @@ Plugin 'VundleVim/Vundle.vim'
 "   :PluginClean
 " Plugins
 
-"Plugin 'scrooloose/nerdtree'
-"map <F2> :NERDTreeToggle <CR>
+Plugin 'scrooloose/nerdtree'
+map <F2> :NERDTreeToggle <CR>
 
 Plugin 'scrooloose/syntastic'
 
@@ -224,7 +224,11 @@ let g:netrw_liststyle=3     " tree view
 let g:netrw_browse_split=4  " open in prior window
 let g:netrw_altv=1          " open splits to the right
 let g:netrw_winsize = 15
-augroup ProjectDrawer
-  autocmd!
-  autocmd VimEnter * :Vexplore
-augroup END
+
+let g:netrw_list_hide=netrw_gitignore#Hide()
+let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
+
+"augroup ProjectDrawer
+"  autocmd!
+"  autocmd VimEnter * :Vexplore
+"augroup END
