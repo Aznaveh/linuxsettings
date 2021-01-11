@@ -1,3 +1,4 @@
+let g:netrw_banner = 0
 " Vim configuration file
 " C/C++ programmer; sometimes using matlab too
 " Author: Aznaveh
@@ -31,8 +32,8 @@ Plugin 'VundleVim/Vundle.vim'
 "   :PluginClean
 " Plugins
 
-Plugin 'scrooloose/nerdtree'
-map <F2> :NERDTreeToggle <CR>
+"Plugin 'scrooloose/nerdtree'
+"map <F2> :NERDTreeToggle <CR>
 
 Plugin 'scrooloose/syntastic'
 
@@ -191,7 +192,7 @@ set writebackup
 " tags 
 """""""""
 set tags=./tags;$HOME
-command! MakeTags !ctags -R .
+command! MakeTags !ctags -R *
 " - Use ^] to jump to tag under cursor
 " - Use g^] for ambiguous tags
 " - Use ^t to jump back up the tag stack
@@ -216,3 +217,14 @@ let g:ackprg= 'ag --vimgrep'
 
 "set paste "Doesnt work with snippets
 set modifiable
+
+" Tweaks for browsing
+let g:netrw_banner=0        " disable annoying banner
+let g:netrw_liststyle=3     " tree view
+let g:netrw_browse_split=4  " open in prior window
+let g:netrw_altv=1          " open splits to the right
+let g:netrw_winsize = 15
+augroup ProjectDrawer
+  autocmd!
+  autocmd VimEnter * :Vexplore
+augroup END
