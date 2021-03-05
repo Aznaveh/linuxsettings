@@ -35,7 +35,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 map <F2> :NERDTreeToggle <CR>
 
-Plugin 'scrooloose/syntastic'
+"Plugin 'scrooloose/syntastic'
 
 Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -46,7 +46,8 @@ Plugin 'airblade/vim-gitgutter'
 
 " Color schemes
 Plugin 'nelstrom/vim-mac-classic-theme'
-Plugin 'altercation/vim-colors-solarized'
+"Plugin 'altercation/vim-colors-solarized'  "deprecated
+Plugin 'lifepillar/vim-solarized8'
 
 " Fuzzy search file
 "Plugin 'kien/ctrlp.vim'
@@ -56,8 +57,8 @@ Plugin 'altercation/vim-colors-solarized'
 "Plugin 'tomtom/tlib_vim'
 
 "Tagbar for programming
-Plugin 'majutsushi/tagbar'
-nmap <F8> :TagbarToggle <CR>
+"Plugin 'majutsushi/tagbar'
+"nmap <F8> :TagbarToggle <CR>
 
 "search  match with silver searchr
 "Plugin 'mileszs/ack.vim'
@@ -71,13 +72,13 @@ let g:clang_library_path='/usr/local/llvm/clang-3.8/lib/libclang.so'
 " Colors
 """"""""
 "set term=xterm-256color
-let g:solarized_termcolors=256
-set t_Co=256
+set termguicolors
 "colorscheme elflord
 "colorscheme neonwave
 "colorscheme monochrome
 set background=light
-colorscheme solarized
+colorscheme solarized8_high
+
 
 
 """""""""""""""
