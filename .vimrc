@@ -35,19 +35,22 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 map <F2> :NERDTreeToggle <CR>
 
-"Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
 
 Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 let g:airline_theme='bubblegum'
-"let g:airline_solarized_bg='light'
+let g:airline_solarized_bg='light'
 
 Plugin 'airblade/vim-gitgutter'
 
 " Color schemes
-Plugin 'nelstrom/vim-mac-classic-theme'
+"Plugin 'nelstrom/vim-mac-classic-theme'
 "Plugin 'altercation/vim-colors-solarized'  "deprecated
 Plugin 'lifepillar/vim-solarized8'
+let g:solarized_visibility='high'
+let g:solarized_itallics=1
+
 
 " Fuzzy search file
 "Plugin 'kien/ctrlp.vim'
