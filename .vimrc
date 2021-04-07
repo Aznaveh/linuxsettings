@@ -218,7 +218,7 @@ highlight ColorColumn ctermbg=238
 set colorcolumn=80
 
 "silver searcher
-let g:ackprg= 'ag --vimgrep'
+"let g:ackprg= 'ag --vimgrep'
 
 "set paste "Doesnt work with snippets
 set modifiable
@@ -234,3 +234,6 @@ set modifiable
 "  autocmd!
 "  autocmd VimEnter * :Vexplore
 "augroup END
+"""""" for terminal mode 
+tnoremap <Esc> <C-\><C-n>
+
