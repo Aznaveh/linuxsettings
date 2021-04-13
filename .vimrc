@@ -33,23 +33,32 @@ Plugin 'VundleVim/Vundle.vim'
 " Plugins
 
 Plugin 'scrooloose/nerdtree'
-map <F2> :NERDTreeToggle <CR>
-
-Plugin 'scrooloose/syntastic'
-
-Plugin 'bling/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-let g:airline_theme='bubblegum'
-let g:airline_solarized_bg='light'
-
-Plugin 'airblade/vim-gitgutter'
+"map <F2> :NERDTreeToggle <CR>
 
 " Color schemes
 "Plugin 'nelstrom/vim-mac-classic-theme'
 "Plugin 'altercation/vim-colors-solarized'  "deprecated
 Plugin 'lifepillar/vim-solarized8'
-let g:solarized_visibility='high'
+"let g:solarized_visibility='high'
 let g:solarized_itallics=1
+
+
+Plugin 'scrooloose/syntastic'
+
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+let g:airline_theme='bubblegum'
+let g:airline_solarized_bg='light'
+
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#formatter = 'default'
+let g:airline#extensions#tabline#formatter = 'default'
+
+Plugin 'airblade/vim-gitgutter'
+
 
 
 " Fuzzy search file
@@ -64,7 +73,10 @@ let g:solarized_itallics=1
 "nmap <F8> :TagbarToggle <CR>
 
 "search  match with silver searchr
-"Plugin 'mileszs/ack.vim'
+Plugin 'mileszs/ack.vim'
+if executable('ag') "just use it if you have ag installed
+    let g:ackprg = 'ag --nogroup --nocolor --column' 
+endif
 
 
 call vundle#end()
@@ -80,6 +92,7 @@ set termguicolors
 "colorscheme neonwave
 "colorscheme monochrome
 set background=dark
+set guifont=Meslo\ LG\ S\ Regular\ for\ Powerline:h20
 colorscheme solarized8_high
 
 
@@ -116,6 +129,10 @@ set noerrorbells " Turning off the error bells
 set laststatus=1 "only if there are at least two windows
 set nobackup
 set nowritebackup
+set guicursor=n-v-c:block,i-ci-ve:ver35,r-cr:hor20,o:hor50
+            \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
+            \,sm:block-blinkwait175-blinkoff150-blinkon175
+
 
 """"""""""""""""""""
 " FINDING FILES:
@@ -217,8 +234,6 @@ set colorcolumn=+1        " highlight column after 'textwidth'
 highlight ColorColumn ctermbg=238
 set colorcolumn=80
 
-"silver searcher
-"let g:ackprg= 'ag --vimgrep'
 
 "set paste "Doesnt work with snippets
 set modifiable
