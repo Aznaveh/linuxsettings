@@ -59,17 +59,17 @@ let g:airline#extensions#tabline#formatter = 'default'
 
 Plugin 'airblade/vim-gitgutter'
 
-"Formatting
+"" Formatting: I didn't really like autoformat although it is updated recently
 "Plugin 'chiel92/vim-autoformat'
 "let g:python3_host_prog='/usr/bin/python3'
 
-Plugin 'rhysd/vim-clang-format'
+Plugin 'rhysd/vim-clang-format' "clang-format should be installed?
 let g:clang_format#style_options = {
             \ "AccessModifierOffset" : -4,
             \ "AllowShortIfStatementsOnASingleLine" : "false",
             \ "AlwaysBreakTemplateDeclarations" : "true",
             \ "Standard" : "C++11",
-            \ "BreakBeforeBraces" : "Allman"}
+            \ "BreakBeforeBraces" : "Allman"}  " 
 
 " Fuzzy search file
 "Plugin 'kien/ctrlp.vim'
