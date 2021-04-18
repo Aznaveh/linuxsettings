@@ -59,7 +59,17 @@ let g:airline#extensions#tabline#formatter = 'default'
 
 Plugin 'airblade/vim-gitgutter'
 
+"Formatting
+"Plugin 'chiel92/vim-autoformat'
+"let g:python3_host_prog='/usr/bin/python3'
 
+Plugin 'rhysd/vim-clang-format'
+let g:clang_format#style_options = {
+            \ "AccessModifierOffset" : -4,
+            \ "AllowShortIfStatementsOnASingleLine" : "false",
+            \ "AlwaysBreakTemplateDeclarations" : "true",
+            \ "Standard" : "C++11",
+            \ "BreakBeforeBraces" : "Allman"}
 
 " Fuzzy search file
 "Plugin 'kien/ctrlp.vim'
