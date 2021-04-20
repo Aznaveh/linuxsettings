@@ -66,7 +66,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'rhysd/vim-clang-format' "clang-format should be installed?
 let g:clang_format#style_options = {
             \ "AccessModifierOffset" : -4,
-            \ "AllowShortIfStatementsOnASingleLine" : "false",
+            \ "AllowShortIfStatementsOnASingleLine" : "true",
             \ "AlwaysBreakTemplateDeclarations" : "true",
             \ "Standard" : "C++11",
             \ "BreakBeforeBraces" : "Allman"}  " 
@@ -82,11 +82,11 @@ let g:clang_format#style_options = {
 "Plugin 'majutsushi/tagbar'
 "nmap <F8> :TagbarToggle <CR>
 
-"search  match with silver searchr DO NOT USE SLOW in ssh
-"Plugin 'mileszs/ack.vim'
-"if executable('ag') "just use it if you have ag installed
-"    let g:ackprg = 'ag --nogroup --nocolor --column' 
-"endif
+"search  match with silver searchr/ Don't use it make vim SLOW
+" Plugin 'mileszs/ack.vim'
+" if executable('ag') "just use it if you have ag installed
+"     let g:ackprg = 'ag --nogroup --nocolor --column' 
+" endif
 
 
 call vundle#end()
