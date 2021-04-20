@@ -72,11 +72,11 @@ Plugin 'airblade/vim-gitgutter'
 "Plugin 'majutsushi/tagbar'
 "nmap <F8> :TagbarToggle <CR>
 
-"search  match with silver searchr
-Plugin 'mileszs/ack.vim'
-if executable('ag') "just use it if you have ag installed
-    let g:ackprg = 'ag --nogroup --nocolor --column' 
-endif
+"search  match with silver searchr DO NOT USE SLOW in ssh
+"Plugin 'mileszs/ack.vim'
+"if executable('ag') "just use it if you have ag installed
+"    let g:ackprg = 'ag --nogroup --nocolor --column' 
+"endif
 
 
 call vundle#end()
@@ -251,4 +251,3 @@ set modifiable
 "augroup END
 """""" for terminal mode 
 tnoremap <Esc> <C-\><C-n>
-
