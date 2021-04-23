@@ -83,10 +83,10 @@ let g:clang_format#style_options = {
 "nmap <F8> :TagbarToggle <CR>
 
 "search  match with silver searchr/ Don't use it make vim SLOW
-" Plugin 'mileszs/ack.vim'
-" if executable('ag') "just use it if you have ag installed
-"     let g:ackprg = 'ag --nogroup --nocolor --column' 
-" endif
+Plugin 'mileszs/ack.vim'
+if executable('ag') "just use it if you have ag installed
+    let g:ackprg = 'ag --nogroup --nocolor --column' 
+endif
 
 
 call vundle#end()
@@ -143,6 +143,7 @@ set guicursor=n-v-c:block,i-ci-ve:ver35,r-cr:hor20,o:hor50
             \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
             \,sm:block-blinkwait175-blinkoff150-blinkon175
 
+"set clipboard=exclude:.* clipboard makes startup very slow
 
 """"""""""""""""""""
 " FINDING FILES:
