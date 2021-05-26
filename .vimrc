@@ -143,7 +143,21 @@ set guicursor=n-v-c:block,i-ci-ve:ver35,r-cr:hor20,o:hor50
             \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
             \,sm:block-blinkwait175-blinkoff150-blinkon175
 
-"set clipboard=exclude:.* clipboard makes startup very slow
+"set clipboard=exclude:.* "clipboard can make startup very slow
+set clipboard^=unnamed,unnamedplus
+"" Clipboard copy
+    let g:clipboard = {
+     \   'name': 'xclip-xfce4-clipman',
+     \   'copy': {
+     \      '+': 'xclip -selection clipboard',
+     \      '*': 'xclip -selection clipboard',
+     \    },
+     \   'paste': {
+     \      '+': 'xclip -selection clipboard -o',
+     \      '*': 'xclip -selection clipboard -o',
+     \   },
+     \   'cache_enabled': 1,
+     \ }
 
 """"""""""""""""""""
 " FINDING FILES:
