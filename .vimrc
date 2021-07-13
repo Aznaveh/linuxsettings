@@ -60,16 +60,26 @@ let g:airline#extensions#tabline#formatter = 'default'
 Plugin 'airblade/vim-gitgutter'
 
 "" Formatting: I didn't really like autoformat although it is updated recently
-"Plugin 'chiel92/vim-autoformat'
 "let g:python3_host_prog='/usr/bin/python3'
 
-Plugin 'rhysd/vim-clang-format' "clang-format should be installed?
-let g:clang_format#style_options = {
-            \ "AccessModifierOffset" : -4,
-            \ "AllowShortIfStatementsOnASingleLine" : "true",
-            \ "AlwaysBreakTemplateDeclarations" : "true",
-            \ "Standard" : "C++11",
-            \ "BreakBeforeBraces" : "Allman"}  " 
+
+Plugin 'Chiel92/vim-autoformat'  "clang-format should be installed
+"This part is only for pragmas when clang_format fixed it I can take it out
+command! -nargs=? -range=% -complete=filetype -bar MAutoformat
+            \ let mm_winview=winsaveview() |
+            \ <line1>,<line2>s/#pragma omp/\/\/#pragma omp/e |
+            \ <line1>,<line2>s/#pragma simd/\/\/#pragma simd/e |
+            \ <line1>,<line2> Autoformat |
+            \ <line1>,<line2>s/\/\/ *#pragma simd/#pragma simd/e |
+            \ <line1>,<line2>s/\/\/ *#pragma omp/#pragma omp/e |
+            \ call winrestview(mm_winview)
+ 
+autocmd BufEnter *.c*,*.h,*.hpp exe 'vmap = :MAutoformat<CR>'
+autocmd BufEnter *.c*,*.h,*.hpp exe 'nmap =G :.,$MAutoformat<CR>'
+autocmd BufEnter *.c*,*.h,*.hpp exe 'nmap == :MAutoformat<CR>'
+autocmd BufEnter *.c*,*.h,*.hpp exe 'nmap =% :.,/}/; Autoformat<CR>'
+autocmd BufEnter *.c*,*.h,*.hpp exe 'nmap =<UP> :.-1,.MAutoformat<CR>'
+autocmd BufEnter *.c*,*.h,*.hpp exe 'nmap =<DOWN> :.,.+1MAutoformat<CR>'
 
 " Fuzzy search file
 "Plugin 'kien/ctrlp.vim'
