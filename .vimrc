@@ -1,4 +1,3 @@
-let g:netrw_banner = 0
 " Vim configuration file
 " C/C++ programmer; sometimes using matlab too
 " Author: Aznaveh
@@ -62,24 +61,53 @@ Plugin 'airblade/vim-gitgutter'
 "" Formatting: I didn't really like autoformat although it is updated recently
 "let g:python3_host_prog='/usr/bin/python3'
 
+"map <C-K> :pyf  ~/clang-format.py<cr>
+"imap <C-K> <c-o>:pyf ~/clang-format.py<cr>
 
-Plugin 'Chiel92/vim-autoformat'  "clang-format should be installed
+"Plugin 'Chiel92/vim-autoformat'  "clang-format should be installed
 "This part is only for pragmas when clang_format fixed it I can take it out
-command! -nargs=? -range=% -complete=filetype -bar MAutoformat
-            \ let mm_winview=winsaveview() |
-            \ <line1>,<line2>s/#pragma omp/\/\/#pragma omp/e |
-            \ <line1>,<line2>s/#pragma simd/\/\/#pragma simd/e |
-            \ <line1>,<line2> Autoformat |
-            \ <line1>,<line2>s/\/\/ *#pragma simd/#pragma simd/e |
-            \ <line1>,<line2>s/\/\/ *#pragma omp/#pragma omp/e |
-            \ call winrestview(mm_winview)
- 
-autocmd BufEnter *.c*,*.h,*.hpp exe 'vmap = :MAutoformat<CR>'
-autocmd BufEnter *.c*,*.h,*.hpp exe 'nmap =G :.,$MAutoformat<CR>'
-autocmd BufEnter *.c*,*.h,*.hpp exe 'nmap == :MAutoformat<CR>'
-autocmd BufEnter *.c*,*.h,*.hpp exe 'nmap =% :.,/}/; Autoformat<CR>'
-autocmd BufEnter *.c*,*.h,*.hpp exe 'nmap =<UP> :.-1,.MAutoformat<CR>'
-autocmd BufEnter *.c*,*.h,*.hpp exe 'nmap =<DOWN> :.,.+1MAutoformat<CR>'
+Plugin 'rhysd/vim-clang-format'
+
+let g:clang_format#style_options = {
+            \ "IndentWidth" : 4,
+            \ "AccessModifierOffset" : -4,
+            \ "AllowShortCaseLabelsOnASingleLine": "true",
+            \ "AllowShortIfStatementsOnASingleLine" : "true",
+            \ "AllowShortLoopsOnASingleLine": "true",
+            \ "AlwaysBreakTemplateDeclarations" : "true",
+            \ "AllowShortFunctionsOnASingleLine" : "true",
+            \ "Standard" : "C++11",
+            \"ConstructorInitializerAllOnOneLineOrOnePerLine": "true",
+            \ "BraceWrapping": {
+                \"AfterClass" : "true",
+                \"AfterControlStatement" : "true",
+                \"AfterEnum" : "true",
+                \"AfterFunction" : "true",
+                \"AfterNamespace" : "true",
+                \"AfterObjCDeclaration" : "true",
+                \"AfterStruct" : "true",
+                \"AfterUnion" : "true",
+                \"AfterExternBlock" : "true",
+                \"IndentBraces" : "true"
+                \},
+            \ "BreakBeforeBraces" : "Allman"} 
+
+""  This works only with autoformat for openmp
+"command! -nargs=? -range=% -complete=filetype -bar MAutoformat
+"            \ let mm_winview=winsaveview() |
+"            \ <line1>,<line2>s/#pragma omp/\/\/#pragma omp/e |
+"            \ <line1>,<line2>s/#pragma simd/\/\/#pragma simd/e |
+"            \ <line1>,<line2> Autoformat |
+"            \ <line1>,<line2>s/\/\/ *#pragma simd/#pragma simd/e |
+"            \ <line1>,<line2>s/\/\/ *#pragma omp/#pragma omp/e |
+"            \ call winrestview(mm_winview)
+" 
+"autocmd BufEnter *.c*,*.h,*.hpp exe 'vmap = :MAutoformat<CR>'
+"autocmd BufEnter *.c*,*.h,*.hpp exe 'nmap =G :.,$MAutoformat<CR>'
+"autocmd BufEnter *.c*,*.h,*.hpp exe 'nmap == :MAutoformat<CR>'
+"autocmd BufEnter *.c*,*.h,*.hpp exe 'nmap =% :.,/}/; Autoformat<CR>'
+"autocmd BufEnter *.c*,*.h,*.hpp exe 'nmap =<UP> :.-1,.MAutoformat<CR>'
+"autocmd BufEnter *.c*,*.h,*.hpp exe 'nmap =<DOWN> :.,.+1MAutoformat<CR>'
 
 " Fuzzy search file
 "Plugin 'kien/ctrlp.vim'
@@ -99,9 +127,11 @@ if executable('ag') "just use it if you have ag installed
 endif
 
 
+"Plugin 'rust-lang/rust.vim'
+
 call vundle#end()
 " path to directory where library can be found
-let g:clang_library_path='/usr/local/llvm/clang-3.8/lib/libclang.so'
+"let g:clang_library_path='/usr/local/llvm/clang-3.8/lib/libclang.so'
 
 """"""""
 " Colors
@@ -131,6 +161,8 @@ set nocscopeverbose
 set cinkeys-=0#
 
 set backspace=indent,eol,start
+
+
 """""""""""
 " UI Config
 """""""""""
