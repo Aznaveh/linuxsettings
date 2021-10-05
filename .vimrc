@@ -92,6 +92,14 @@ let g:clang_format#style_options = {
                 \},
             \ "BreakBeforeBraces" : "Allman"} 
 
+"" A simple solution for fixing #pramgas is this, must be done in terminal 
+""   # Replace "#pragma omp" by "//#pragma omp"
+""   sed -i 's/#pragma omp/\/\/#pragma omp/g' ./main.c
+""   # Do format
+""   clang-format ./main.c
+""   # Replace "// *#pragma omp" by "#pragma omp"
+""   sed -i 's/\/\/ *#pragma omp/#pragma omp/g' ./main.c
+
 ""  This works only with autoformat for openmp
 "command! -nargs=? -range=% -complete=filetype -bar MAutoformat
 "            \ let mm_winview=winsaveview() |
