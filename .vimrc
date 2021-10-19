@@ -152,6 +152,7 @@ set termguicolors
 set background=dark
 set guifont=Meslo\ LG\ S\ Regular\ for\ Powerline:h20
 colorscheme solarized8_high
+hi Normal guibg=NONE ctermbg=NONE
 
 
 
