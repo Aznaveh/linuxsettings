@@ -276,6 +276,10 @@ nnoremap j gj
 nnoremap k gk
 
 " movement between splits
+nnoremap <Backspace> <Esc><C-W><C-h>  " getting rid of Backspace key
+nnoremap <C-l> <Esc><C-W><C-l>
+
+
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
