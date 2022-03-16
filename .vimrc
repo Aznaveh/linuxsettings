@@ -139,11 +139,15 @@ let g:clang_format#style_options = {
 "autocmd BufEnter *.c*,*.h,*.hpp exe 'nmap =<DOWN> :.,.+1MAutoformat<CR>'
 
 " Fuzzy search file
-"Plugin 'kien/ctrlp.vim'
+Plugin 'kien/ctrlp.vim'
 
 "Autocompletion
-"Plugin 'MarcWeber/vim-addon-mw-utils'
-"Plugin 'tomtom/tlib_vim'
+Plugin 'tabnine/YouCompleteMe' "for instlling go to .vim/bundle/YouCompleteMe
+                               " python3 install.py --all
+                               " to delete chmode -R 777 that folder and rm
+"let g:loaded_youcompleteme = 1  "uncomment not to let it load
+
+
 
 "Tagbar for programming
 "Plugin 'majutsushi/tagbar'
@@ -210,6 +214,8 @@ set noerrorbells " Turning off the error bells
 
 set laststatus=1 "only if there are at least two windows
 set nobackup
+map <ScrollWheelUp> <C-Y>
+map <ScrollWheelDown> <C-E>
 set nowritebackup
 set guicursor=n-v-c:block,i-ci-ve:ver35,r-cr:hor20,o:hor50
             \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
@@ -276,15 +282,13 @@ nnoremap j gj
 nnoremap k gk
 
 " movement between splits
-nnoremap <Backspace> <Esc><C-W><C-h>  " getting rid of Backspace key
+nnoremap <Backspace> <Esc><C-W><C-h>   " getting rid of Backspace key
 nnoremap <C-l> <Esc><C-W><C-l>
-
 
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-
 
 """"""""""""
 " Encryption
