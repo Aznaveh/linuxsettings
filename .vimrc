@@ -237,6 +237,9 @@ set clipboard^=unnamed,unnamedplus
      \   'cache_enabled': 1,
      \ }
 
+
+match Error /.*FIXME.*/  "custom word highlighting
+
 """"""""""""""""""""
 " FINDING FILES:
 """"""""""""""""""""
