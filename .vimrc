@@ -145,7 +145,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'tabnine/YouCompleteMe' "for instlling go to .vim/bundle/YouCompleteMe
                                " python3 install.py --all
                                " to delete chmode -R 777 that folder and rm
-"let g:loaded_youcompleteme = 1  "uncomment not to let it load
+let g:loaded_youcompleteme = 1  "uncomment not to let it load
 
 
 
@@ -238,7 +238,7 @@ set clipboard^=unnamed,unnamedplus
      \ }
 
 
-match Error /.*FIXME.*/  "custom word highlighting
+"match Error /.*FIXME.*/  "custom word highlighting
 
 """"""""""""""""""""
 " FINDING FILES:
@@ -342,6 +342,12 @@ set colorcolumn=+1        " highlight column after 'textwidth'
 highlight ColorColumn ctermbg=238
 set colorcolumn=80
 
+augroup WrapLineInTeXFile
+    autocmd!
+    autocmd FileType tex setlocal wrap
+    autocmd FileType tex setlocal textwidth=80
+augroup END
+
 
 "set paste "Doesnt work with snippets
 set modifiable
@@ -358,4 +364,5 @@ set modifiable
 "  autocmd VimEnter * :Vexplore
 "augroup END
 """""" for terminal mode 
+autocmd BufNewFile,BufRead *.inc set ft=make
 tnoremap <Esc> <C-\><C-n>
