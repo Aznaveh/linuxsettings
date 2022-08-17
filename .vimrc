@@ -341,7 +341,7 @@ set colorcolumn=+1        " highlight column after 'textwidth'
 "highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
 highlight ColorColumn ctermbg=238
 set colorcolumn=80
-
+"wrapping only tex files
 augroup WrapLineInTeXFile
     autocmd!
     autocmd FileType tex setlocal wrap
