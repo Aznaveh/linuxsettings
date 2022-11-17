@@ -98,6 +98,7 @@ let g:clang_format#style_options = {
             \ "AlwaysBreakTemplateDeclarations" : "true",
             \ "AllowShortFunctionsOnASingleLine" : "true",
             \ "Standard" : "C++11",
+            \ "IndentPPDirectives" : "BeforeHash",
             \"ConstructorInitializerAllOnOneLineOrOnePerLine": "true",
             \ "BraceWrapping": {
                 \"AfterClass" : "true",
@@ -192,7 +193,8 @@ set expandtab " tabs are not converted to spaces
 set smartindent
 set autoindent
 set nocscopeverbose
-set cinkeys-=0#
+"set cinkeys-=0#
+"set cinoptions+=#1s
 
 set backspace=indent,eol,start
 
