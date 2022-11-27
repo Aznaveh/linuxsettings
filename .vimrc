@@ -198,7 +198,7 @@ set nocscopeverbose
 
 set backspace=indent,eol,start
 " underscores not counted as parts of the word
-set iskeyword-=_   " to reverse it do this :set iskeyword+=_
+"set iskeyword-=_   " to reverse it do this :set iskeyword+=_
 
 
 """""""""""
