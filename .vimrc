@@ -369,5 +369,7 @@ set modifiable
 "augroup END
 """""" for terminal mode 
 autocmd BufNewFile,BufRead *.inc set ft=make
-tnoremap <Esc> <C-\><C-n>
-tnoremap <esc><esc> <c-w>:q!<cr>
+"tnoremap <Esc> <C-\><C-n>
+"tnoremap <ESC><ESC> <C-w>:q!<CR>
+
+set wildmode=longest,list,full
